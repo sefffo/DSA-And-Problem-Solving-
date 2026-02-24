@@ -1,0 +1,64 @@
+{
+  "name": "LinkedList",
+  "path": "s:\\Software Engineering\\DSA Udemy\\Code\\LinkedList",
+  "type": "directory",
+  "children": [
+    {
+      "name": "New folder",
+      "type": "folder",
+      "icon": "📁"
+    },
+    {
+      "name": "draw.drawio.svg",
+      "type": "file",
+      "icon": "🖼️"
+    },
+    {
+      "name": "findTheMiddleNode.cpp",
+      "type": "file",
+      "icon": "📄"
+    },
+    {
+      "name": "findTheMiddleNode.exe",
+      "type": "file",
+      "icon": "📄"
+    },
+    {
+      "name": "freedraw.png",
+      "type": "file",
+      "icon": "🖼️"
+    },
+    {
+      "name": "hasLoop.cpp",
+      "type": "file",
+      "icon": "📄"
+    },
+    {
+      "name": "hasLoop.exe",
+      "type": "file",
+      "icon": "📄"
+    },
+    {
+      "name": "kthNodeFromEnd.cpp",
+      "type": "file",
+      "icon": "📄"
+    },
+    {
+      "name": "linkedlist.cpp",
+      "type": "file",
+      "icon": "📄"
+    },
+    {
+      "name": "linkedlist.exe",
+      "type": "file",
+      "icon": "📄"
+    }
+  ],
+  "metadata": {
+    "generated": "2026-02-08T20:48:25.001Z",
+    "generator": "FileTree Pro Extension",
+    "version": "0.2.0",
+    "showIcons": true,
+    "maxDepth": 10
+  }
+}
