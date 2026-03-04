@@ -55,7 +55,7 @@ public:
         }
         return false;
     }
-    bool RemoveEdge(string vertex)
+    bool RemoveVertex(string vertex)
     {
         if (adjList.count(vertex) == 0)
             return false;
@@ -82,6 +82,6 @@ int main()
     g->AddEdge("B", "C");
     g->printGraph();
     cout << "------------------" << endl;
-    g->RemoveEdge("A");
+    g->RemoveVertex("A");
     g->printGraph();
 }
