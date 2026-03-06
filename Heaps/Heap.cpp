@@ -5,7 +5,8 @@ using namespace std;
 
 class Heap
 {
-
+//the mostly used when implementng Priorty Queue because of the complixity of adding or removing is o(log n)
+//which its the hight of the tree  
 private:
     vector<int> heap;
     int leftChild(int index)
@@ -23,8 +24,36 @@ private:
     void swap(int index1, int index2)
     {
         int temp = heap[index1];
-        heap[index1] = heap[index2]; 
+        heap[index1] = heap[index2];
         heap[index2] = temp;
+    }
+
+    void sinkDown(int index)
+    {
+
+        int maxIndex = index;
+        while (true)
+        {
+            int leftIndex = leftChild(index);
+            int rightIndex = rightChild(index);
+            if (leftIndex<heap.size()&&heap[leftIndex] > heap[rightIndex])
+            {
+                maxIndex = leftIndex;
+            }
+            if (rightIndex<heap.size()&&heap[leftIndex] < heap[rightIndex])
+            {
+                maxIndex = rightIndex;
+            }
+            if (maxIndex != index)
+            {
+                swap(index, maxIndex);
+                index = maxIndex;
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 
 public:
@@ -52,11 +81,30 @@ public:
             current = Parent(current);
         }
     }
+    int remove()
+    {
+        if (heap.empty())
+        {
+            return INT_MIN;
+        }
+        int MaxValue = heap.front();
+        if (heap.size() == 1)
+        {
+            heap.pop_back();
+        }
+        else
+        {
+            heap[0] = heap.back();
+            heap.pop_back();
+            sinkDown(0);
+        }
+        return MaxValue;
+    }
 };
 
 int main()
 {
-    Heap* heap= new Heap();
+    Heap *heap = new Heap();
     heap->insert(99);
     heap->insert(72);
     heap->insert(61);
@@ -66,6 +114,4 @@ int main()
     heap->printHeap();
     heap->insert(75);
     heap->printHeap();
-
-
 }
