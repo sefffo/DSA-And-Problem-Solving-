@@ -27,20 +27,18 @@ private:
         heap[index1] = heap[index2];
         heap[index2] = temp;
     }
-
     void sinkDown(int index)
     {
-
         int maxIndex = index;
         while (true)
         {
             int leftIndex = leftChild(index);
             int rightIndex = rightChild(index);
-            if (leftIndex<heap.size()&&heap[leftIndex] > heap[rightIndex])
+            if (leftIndex<heap.size()&&heap[leftIndex] > heap[maxIndex])
             {
                 maxIndex = leftIndex;
             }
-            if (rightIndex<heap.size()&&heap[leftIndex] < heap[rightIndex])
+            if (rightIndex<heap.size()&&heap[rightIndex] > heap[maxIndex])
             {
                 maxIndex = rightIndex;
             }
@@ -70,7 +68,6 @@ public:
         }
         cout << "]" << endl;
     }
-
     void insert(int value)
     {
         heap.push_back(value);
@@ -114,4 +111,9 @@ int main()
     heap->printHeap();
     heap->insert(75);
     heap->printHeap();
+    cout << "Max Value: " << heap->remove() << endl;
+    heap->printHeap();
+    cout << "Max Value: " << heap->remove() << endl;
+    heap->printHeap();
+    cout << "Max Value: " << heap->remove() << endl;
 }
