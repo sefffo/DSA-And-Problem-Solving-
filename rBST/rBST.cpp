@@ -41,104 +41,187 @@ public:
         delete currentNode;
     }
 
-    bool Insert(int value)
+    int MinValue(Node *currentNode)
     {
-        Node *newNode = new Node(value);
-        if (root == nullptr)
+        while (currentNode->left != nullptr)
         {
-            root = newNode;
-            return true;
+            currentNode = currentNode->left;
         }
 
-        Node *temp = root;
-        while (true)
-        {
-            if (newNode->value == temp->value)
-            {
-                return false;
-            }
-            if (newNode->value < temp->value)
-            {
-                if (temp->left == nullptr)
-                {
-                    temp->left = newNode;
-                    return true;
-                }
-                temp = temp->left;
-            }
-            else
-            {
-                if (temp->right == nullptr)
-                {
-                    temp->right = newNode;
-                    return true;
-                }
-                temp = temp->right;
-            }
-        }
+        return currentNode->value;
     }
 
-    bool rContains(Node *CurrentNode, int value)
-    {
-        if (CurrentNode == nullptr)
-            return false;
-        if (CurrentNode->value == value)
-            return true;
 
-        if (value < CurrentNode->value)
+
+
+
+
+    Node *rDeleteNode(Node *currentNode, int value)
+    {
+        if (currentNode == nullptr)
+            return nullptr; // value not in the tree
+
+        if (value < currentNode->value)
         {
-            return rContains(CurrentNode->left, value);
+            currentNode->left = rDeleteNode(currentNode->left, value);
+        }
+        else if (value > currentNode->value)
+        {
+            currentNode->right = rDeleteNode(currentNode->right, value);
         }
         else
         {
-            return rContains(CurrentNode->right, value);
-        }
-    }
-
-    bool rContains(int value)
-    {
-        rContains(root, value);
-    }
-
-    bool Conatins(int value)
-    {
-        if (root == nullptr)
-            return false;
-        Node *temp = root;
-        while (temp)
-        {
-            if (value < temp->value)
+            if (currentNode->right == nullptr && currentNode->left == nullptr)
             {
-                temp = temp->left;
+                delete (currentNode);
+                return nullptr;
             }
-            else if (value > temp->value)
+            else if (currentNode->right == nullptr)
             {
-                temp = temp->right;
+                Node *temp = currentNode->left;
+                delete (currentNode);
+                return temp;
+            }
+            else if (currentNode->left == nullptr)
+            {
+                Node *temp = currentNode->right;
+                delete (currentNode);
+                return temp;
             }
             else
             {
-                return true;
+                auto minSubtreeNode= MinValue(currentNode->right);
+                currentNode->value = minSubtreeNode;
+                currentNode->right=rDeleteNode(currentNode->right , minSubtreeNode);
             }
         }
-        return false;
+        return currentNode;
     }
-};
 
-int main()
-{
-    BinarySearchTree *bst = new BinarySearchTree();
+        bool Insert(int value)
+        {
+            Node *newNode = new Node(value);
+            if (root == nullptr)
+            {
+                root = newNode;
+                return true;
+            }
 
-    bst->Insert(47);
-    bst->Insert(21);
-    bst->Insert(76);
-    bst->Insert(18);
-    bst->Insert(52);
-    bst->Insert(82);
+            Node *temp = root;
+            while (true)
+            {
+                if (newNode->value == temp->value)
+                {
+                    return false;
+                }
+                if (newNode->value < temp->value)
+                {
+                    if (temp->left == nullptr)
+                    {
+                        temp->left = newNode;
+                        return true;
+                    }
+                    temp = temp->left;
+                }
+                else
+                {
+                    if (temp->right == nullptr)
+                    {
+                        temp->right = newNode;
+                        return true;
+                    }
+                    temp = temp->right;
+                }
+            }
+        }
 
-    bst->Insert(27);
+        Node *rInsert(Node * CurrentNode, int value)
+        {
+            if (CurrentNode == nullptr)
+                return new Node(value);
 
-    cout << (bst->root->left->right)->value << endl;
+            if (value < CurrentNode->value)
+            {
+                CurrentNode->left = rInsert(CurrentNode->left, value);
+            }
+            else if (value > CurrentNode->value)
+            {
+                CurrentNode->right = rInsert(CurrentNode->right, value);
+            }
+            return CurrentNode;
+        }
 
-    cout << (bst->Conatins(27)) << endl;
-    cout << (bst->Conatins(17)) << endl;
-}
+        void rInsert(int value)
+        {
+            if (root == nullptr)
+            {
+                /* code */
+                root = new Node(value);
+                rInsert(root, value);
+            }
+        }
+
+        bool rContains(Node * CurrentNode, int value)
+        {
+            if (CurrentNode == nullptr)
+                return false;
+            if (CurrentNode->value == value)
+                return true;
+
+            if (value < CurrentNode->value)
+            {
+                return rContains(CurrentNode->left, value);
+            }
+            else
+            {
+                return rContains(CurrentNode->right, value);
+            }
+        }
+
+        bool rContains(int value)
+        {
+            rContains(root, value);
+        }
+
+        bool Conatins(int value)
+        {
+            if (root == nullptr)
+                return false;
+            Node *temp = root;
+            while (temp)
+            {
+                if (value < temp->value)
+                {
+                    temp = temp->left;
+                }
+                else if (value > temp->value)
+                {
+                    temp = temp->right;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    };
+
+    int main()
+    {
+        BinarySearchTree *bst = new BinarySearchTree();
+
+        bst->Insert(47);
+        bst->Insert(21);
+        bst->Insert(76);
+        bst->Insert(18);
+        bst->Insert(52);
+        bst->Insert(82);
+
+        bst->Insert(27);
+
+        cout << (bst->root->left->right)->value << endl;
+
+        cout << (bst->Conatins(27)) << endl;
+        cout << (bst->Conatins(17)) << endl;
+    }

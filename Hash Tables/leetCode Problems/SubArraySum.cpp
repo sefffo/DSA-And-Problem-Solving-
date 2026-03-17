@@ -44,13 +44,13 @@ vector<int> subarraySum(const vector<int> &nums, int target)
         if (it != sumIndex.end()) // ← "did we actually find something?"
         {
             // it->second = the index stored in the map
-            
+
             return {it->second + 1, i};
         }
         else
         {
             // not found → insert current cumulative
-            sumIndex.insert({cumulative,i});
+            sumIndex.insert({cumulative, i});
         }
     }
     return res;
@@ -62,7 +62,7 @@ int main()
 
     vector<int> result = subarraySum(nums, target);
 
-    for(auto i : result)
+    for (auto i : result)
     {
         cout << i << " ";
     }
