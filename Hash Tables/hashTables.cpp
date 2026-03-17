@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include<map>
-#include<unordered_map>
+#include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -78,7 +78,7 @@ public:
     {
         int index = hash(key);
         Node *temp = dataMap[index]; // holding pointers to the nodes we have ,
-                                     // so if therse is a index have no nodes temp ==nullptr
+                                     // so if therse is a index have no nodes temp == nullptr
         while (temp != nullptr)
         {
             if (temp->key == key)
@@ -131,16 +131,16 @@ int main()
     }
 }
 
-bool itemInCommon(vector<int> vec1 , vector<int> vec2)
+bool itemInCommon(vector<int> vec1, vector<int> vec2)
 {
-    unordered_map<int,bool> map;
-    for(auto i : vec1)
+    unordered_map<int, bool> map;
+    for (auto i : vec1)
     {
-        map.insert({i,true});
+        map.insert({i, true});
     }
-    for(auto j : vec2)
+    for (auto j : vec2)
     {
-        if(map[j])
+        if (map[j])
         {
             return true;
         }
