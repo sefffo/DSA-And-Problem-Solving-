@@ -100,6 +100,9 @@ public:
         }
         return false;
     }
+    
+    
+    
     void BFS()
     {
         queue<Node *> myQueue;
@@ -118,6 +121,56 @@ public:
                 myQueue.push(CurrentNode->right);
             }
         }
+    }
+
+
+    void DFSPreOrder(Node *currentNode)
+    {
+        cout<<currentNode->value<<" ";
+        if(currentNode->left)
+        {
+            DFSPreOrder(currentNode->left);
+        }
+        if(currentNode->right)
+        {
+            DFSPreOrder(currentNode->right);
+        }
+    }
+    void DFSPreOrder()
+    {
+        DFSPreOrder(root);
+    }
+    void DFSPostOrder(Node*currentNode)
+    {
+        if(currentNode->left)
+        {
+            DFSPreOrder(currentNode->left);
+        }
+        if(currentNode->right)
+        {
+            DFSPreOrder(currentNode->right);
+        }
+        cout<<currentNode->value<<" ";
+    }
+    void DFSPostOrder()
+    {
+        DFSPostOrder(root);
+    }
+    void DFSInOrder(Node*currentNode)
+    {
+        if(currentNode->left)
+        {
+            DFSPreOrder(currentNode->left);
+        }
+        cout<<currentNode->value<<" ";
+        if(currentNode->right)
+        {
+            DFSPreOrder(currentNode->right);
+        }
+    }
+    void DFSInOrder()
+    {
+        DFSInOrder(root);
     }
 };
 
@@ -139,5 +192,6 @@ int main()
     // cout << (bst->Conatins(27)) << endl;
     // cout << (bst->Conatins(17)) << endl;
 
-    bst->BFS();
+    // bst->BFS();
+    bst->DFSPreOrder();
 }
