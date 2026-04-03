@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class Node
@@ -40,7 +41,7 @@ public:
             destroy(currentNode->right);
         delete currentNode;
     }
-    
+
     bool Insert(int value)
     {
         Node *newNode = new Node(value);
@@ -99,6 +100,25 @@ public:
         }
         return false;
     }
+    void BFS()
+    {
+        queue<Node *> myQueue;
+        myQueue.push(root);
+        while (myQueue.size() > 0)
+        {
+            Node *CurrentNode = myQueue.front();
+            myQueue.pop();
+            cout<< CurrentNode->value<<" ";
+            if(CurrentNode->left)
+            {
+                myQueue.push(CurrentNode->left);
+            }  
+            if(CurrentNode->right)
+            {
+                myQueue.push(CurrentNode->right);
+            }
+        }
+    }
 };
 
 int main()
@@ -114,8 +134,10 @@ int main()
 
     bst->Insert(27);
 
-    cout << (bst->root->left->right)->value << endl;
+    // cout << (bst->root->left->right)->value << endl;
 
-    cout << (bst->Conatins(27)) << endl;
-    cout << (bst->Conatins(17)) << endl;
+    // cout << (bst->Conatins(27)) << endl;
+    // cout << (bst->Conatins(17)) << endl;
+
+    bst->BFS();
 }
