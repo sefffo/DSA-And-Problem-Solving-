@@ -74,5 +74,5 @@ Mastering DSA is the foundation of every great engineer. This repository is a pe
 
 **Saif Lotfy** — Full Stack Engineer | .NET & Node.js | Clean Architecture Advocate
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/seif-lotfy-769451310/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saif-lotfy-769451310/)
 [![GitHub](https://img.shields.io/badge/GitHub-121011?style=flat&logo=github&logoColor=white)](https://github.com/sefffo)
